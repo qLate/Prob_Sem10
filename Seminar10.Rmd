@@ -22,7 +22,6 @@ mu2 <- -2
 sigma1 <- 3
 sigma2 <- id
 
-n <- 1000
 for (i in 1:500) {
   data <- rnorm(n, mean = c(mu1, mu2), sd = c(sigma1, sigma2))
 }
