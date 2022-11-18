@@ -73,11 +73,13 @@ $$
 For a standard normal distribution, the kurtosis is $3$. If we get a larger value, then more data are concentrated ner the mean, and the empirical density is more steep
 
 
-```{r} 
+```{r}
+library(moments)
 # your code here
 # skewness
-
+data_skewness <- skewness(data)
 # kurtosis
+data_kurtosis <- kurtosis(data)
 ```
 
 ## 4. Percentiles 
@@ -86,9 +88,12 @@ For a standard normal distribution, the kurtosis is $3$. If we get a larger valu
 
 ```{r} 
 # your code here
-# skewness
-
-# kurtosis
+data_sorted <- sort(data)
+percentiles <- c()
+for (i in 1:9) {
+  percentiles[i] <- data_sorted[i*(n/10)]
+}
+print(percentiles)
 ```
 
 
