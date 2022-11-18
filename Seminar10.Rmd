@@ -91,7 +91,7 @@ data_kurtosis <- kurtosis(data)
 data_sorted <- sort(data)
 percentiles <- c()
 for (i in 1:9) {
-  percentiles[i] <- data_sorted[i*(n/10)]
+  percentiles[i] <- data_sorted[i*100]
 }
 print(percentiles)
 ```
