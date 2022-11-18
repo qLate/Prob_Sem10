@@ -14,9 +14,18 @@ Hint: you can use $\texttt{mean = c}(\mu_1,\mu_2)$ and $\texttt{sd = c}(\sigma_1
 
 ```{r}
 # your code here
+id <- 50
+mu1 <- id
+mu2 <- -2
+sigma1 <- 3
+sigma2 <- id
+
 n <- 1000
-#my.data <- rnorm(...)
-#summary(my.data)
+for (i in 1:500) {
+  data <- rnorm(n, mean = c(mu1, mu2), sd = c(sigma1, sigma2))
+}
+
+summary(data)
 ``` 
 
 ## 2. Visualise the data
