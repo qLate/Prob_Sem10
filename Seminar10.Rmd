@@ -110,12 +110,12 @@ print(percentiles)
 # your code here
 # theoretical expected value and variance
 print("Theoretical expected value is 24")
-print("Theoretical variance is 50.09")
+print("Theoretical variance is 1930")
 # sample mean and sample variance
 # Sample mean
 (mean(data))
 # Sample variance
-(sqrt(var(data)))
+((var(data)))
 ```
 
 
