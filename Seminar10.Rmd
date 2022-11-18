@@ -11,9 +11,6 @@ This is a sample of size $n=1000$ combined from two samples of size $500$ from t
 
 Hint: you can use $\texttt{mean = c}(\mu_1,\mu_2)$ and $\texttt{sd = c}(\sigma_1,\sigma_2)$
 
-```{r}
-library(moments)
-```
 
 ```{r}
 id <- 30
@@ -38,29 +35,29 @@ summary(data)
 
 ```{r}
 # draw histogram
-hist(data, breaks = 100, prob = TRUE)
+hist(data, breaks = 100)
 
 # superimpose empirical density
-lines(density(data), col = "red", lwd = 2)
+data_cdf <- ecdf(data)
 
 # superimpose normal density
-lines(density(rnorm(n, mean = mean(data), sd = sd(data))), col = "blue", lwd = 2)
+plot(data_cdf, lwd = 2)
+lines(density(data), col = "red", lwd = 2)
 ```
 
 ### Plot ecdf
 
 ```{r} 
 # plot ecdf
-data_cdf = ecdf(data) 
 plot(data_cdf, lwd = 2)
 
 # superimpose cdf for standard normal
-theoretical_data <- rnorm(n, mean(data), sd(data))
+theoretical_data <- rnorm(n, mu1 + mu2, sqrt(sigma1^2 + sigma2^2))
 theoretical_cdf <- ecdf(theoretical_data)
 lines(theoretical_cdf, col = "red", lwd = 2)
 
 # calculate maximal difference
-theoretical_cdf(5)
+theoretical_cdf
 # max(knots(data_cdf) - knots(theoretical_cdf))
 ```
 
@@ -83,13 +80,11 @@ For a standard normal distribution, the kurtosis is $3$. If we get a larger valu
 
 ```{r}
 library(moments)
-
+# your code here
 # skewness
 data_skewness <- skewness(data)
-data_skewness
 # kurtosis
 data_kurtosis <- kurtosis(data)
-data_kurtosis
 ```
 
 ## 4. Percentiles 
@@ -99,13 +94,11 @@ data_kurtosis
 ```{r} 
 # your code here
 data_sorted <- sort(data)
-percentiles_handy <- c()
+percentiles <- c()
 for (i in 1:9) {
-  percentiles_handy[i] <- data_sorted[i*(n/10)]
+  percentiles[i] <- data_sorted[i*100]
 }
-print(percentiles_handy)
-
-print(quantile(data_sorted, probs = c(1:9)/10))
+print(percentiles)
 ```
 
 
@@ -114,11 +107,15 @@ print(quantile(data_sorted, probs = c(1:9)/10))
 ### What is the theoretical expected value of the random variable considered? What is the variance? Compare them to the sample values; explain the difference in the variance
 
 ```{r}
+# your code here
 # theoretical expected value and variance
-theoretical_mu <- mu1 + mu2
-theoretical_sigma <- sqrt(sigma1^2 + sigma2^2)
-
+print("Theoretical expected value is 24")
+print("Theoretical variance is 50.09")
 # sample mean and sample variance
+# Sample mean
+(mean(data))
+# Sample variance
+(sqrt(var(data)))
 ```
 
 
@@ -127,14 +124,18 @@ theoretical_sigma <- sqrt(sigma1^2 + sigma2^2)
 ### Calculate the fraction of the data that are within $k\sigma$ of the sample mean for $k=1,2,3$. Do we get the result expected? Why or why not?
 
 ```{r}
-sigma<-sd(data)
-mu<-mean(data)
-srule1<-cut(data, c(mu-1*sigma,mu+1*sigma))
-srule2<-cut(data, c(mu-2*sigma,mu+2*sigma))
-srule3<-cut(data, c(mu-3*sigma,mu+3*sigma))
-summary(data)
-summary(srule1)
-summary(srule2)
-summary(srule3)
+# your code here
+mean <- mean(data)
+sd <- sd(data)
+total <- length(data)
+
+p.in.fraction <- function(k){
+  low = mean - k/2*sd
+  high = mean + k/2*sd
+  percent = sum(data>=low & data<=high)/total *100
+}
+print(paste("Percent of data within 1 SD is ",p.in.fraction(1),"%", sep=""))
+print(paste("Percent of data within 2 SD is ",p.in.fraction(2),"%", sep=""))
+print(paste("Percent of data within 3 SD is ",p.in.fraction(3),"%", sep=""))
 ```
 
