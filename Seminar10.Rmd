@@ -57,7 +57,7 @@ theoretical_cdf <- ecdf(theoretical_data)
 lines(theoretical_cdf, col = "red", lwd = 2)
 
 # calculate maximal difference
-theoretical_cdf
+theoretical_cdf(5)
 # max(knots(data_cdf) - knots(theoretical_cdf))
 ```
 
