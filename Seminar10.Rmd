@@ -11,6 +11,9 @@ This is a sample of size $n=1000$ combined from two samples of size $500$ from t
 
 Hint: you can use $\texttt{mean = c}(\mu_1,\mu_2)$ and $\texttt{sd = c}(\sigma_1,\sigma_2)$
 
+```{r}
+library(moments)
+```
 
 ```{r}
 id <- 30
@@ -35,24 +38,24 @@ summary(data)
 
 ```{r}
 # draw histogram
-hist(data, breaks = 100)
+hist(data, breaks = 100, prob = TRUE)
 
 # superimpose empirical density
-data_cdf <- ecdf(data)
+lines(density(data), col = "red", lwd = 2)
 
 # superimpose normal density
-plot(data_cdf, lwd = 2)
-lines(density(data), col = "red", lwd = 2)
+lines(density(rnorm(n, mean = mean(data), sd = sd(data))), col = "blue", lwd = 2)
 ```
 
 ### Plot ecdf
 
 ```{r} 
 # plot ecdf
+data_cdf = ecdf(data) 
 plot(data_cdf, lwd = 2)
 
 # superimpose cdf for standard normal
-theoretical_data <- rnorm(n, mu1 + mu2, sqrt(sigma1^2 + sigma2^2))
+theoretical_data <- rnorm(n, mean(data), sd(data))
 theoretical_cdf <- ecdf(theoretical_data)
 lines(theoretical_cdf, col = "red", lwd = 2)
 
@@ -80,11 +83,13 @@ For a standard normal distribution, the kurtosis is $3$. If we get a larger valu
 
 ```{r}
 library(moments)
-# your code here
+
 # skewness
 data_skewness <- skewness(data)
+data_skewness
 # kurtosis
 data_kurtosis <- kurtosis(data)
+data_kurtosis
 ```
 
 ## 4. Percentiles 
@@ -96,9 +101,9 @@ data_kurtosis <- kurtosis(data)
 data_sorted <- sort(data)
 percentiles <- c()
 for (i in 1:9) {
-  percentiles[i] <- data_sorted[i*100]
+  percentiles[i] <- data_sorted[i * 100]
 }
-print(percentiles)
+percentiles
 ```
 
 
@@ -107,8 +112,9 @@ print(percentiles)
 ### What is the theoretical expected value of the random variable considered? What is the variance? Compare them to the sample values; explain the difference in the variance
 
 ```{r}
-# your code here
 # theoretical expected value and variance
+theoretical_mu <- mu1 + mu2
+theoretical_sigma <- sqrt(sigma1^2 + sigma2^2)
 
 # sample mean and sample variance
 ```
