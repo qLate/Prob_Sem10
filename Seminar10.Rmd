@@ -127,6 +127,14 @@ theoretical_sigma <- sqrt(sigma1^2 + sigma2^2)
 ### Calculate the fraction of the data that are within $k\sigma$ of the sample mean for $k=1,2,3$. Do we get the result expected? Why or why not?
 
 ```{r}
-# your code here
+sigma<-sd(data)
+mu<-mean(data)
+srule1<-cut(data, c(mu-1*sigma,mu+1*sigma))
+srule2<-cut(data, c(mu-2*sigma,mu+2*sigma))
+srule3<-cut(data, c(mu-3*sigma,mu+3*sigma))
+summary(data)
+summary(srule1)
+summary(srule2)
+summary(srule3)
 ```
 
