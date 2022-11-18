@@ -99,11 +99,13 @@ data_kurtosis
 ```{r} 
 # your code here
 data_sorted <- sort(data)
-percentiles <- c()
+percentiles_handy <- c()
 for (i in 1:9) {
-  percentiles[i] <- data_sorted[i * 100]
+  percentiles_handy[i] <- data_sorted[i*(n/10)]
 }
-percentiles
+print(percentiles_handy)
+
+print(quantile(data_sorted, probs = c(1:9)/10))
 ```
 
 
