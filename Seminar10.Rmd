@@ -13,10 +13,17 @@ Hint: you can use $\texttt{mean = c}(\mu_1,\mu_2)$ and $\texttt{sd = c}(\sigma_1
  
 
 ```{r}
+id <- 30
+
 # your code here
 n <- 1000
-#my.data <- rnorm(...)
-#summary(my.data)
+mean1 <- id
+sd1 <- 3
+mean2 <- -2
+sd2 <- id
+
+data1 <- rnorm(n / 2, mean1, sd1)
+summary(data1)
 ``` 
 
 ## 2. Visualise the data
@@ -29,7 +36,6 @@ n <- 1000
 # superimpose empirical density
 
 # superimpose normal density
-
 ```
 
 ### Plot ecdf
@@ -39,8 +45,7 @@ n <- 1000
 
 # superimpose cdf for standard normal
 
-# calculate maximal difference 
-
+# calculate maximal difference
 ```
 
 ## 3. Skewness and kurtosis of the data
@@ -65,7 +70,6 @@ For a standard normal distribution, the kurtosis is $3$. If we get a larger valu
 # skewness
 
 # kurtosis
-
 ```
 
 ## 4. Percentiles 
@@ -77,7 +81,6 @@ For a standard normal distribution, the kurtosis is $3$. If we get a larger valu
 # skewness
 
 # kurtosis
-
 ```
 
 
@@ -90,7 +93,6 @@ For a standard normal distribution, the kurtosis is $3$. If we get a larger valu
 # theoretical expected value and variance
 
 # sample mean and sample variance
-
 ```
 
 
@@ -100,6 +102,5 @@ For a standard normal distribution, the kurtosis is $3$. If we get a larger valu
 
 ```{r}
 # your code here
-
 ```
 
