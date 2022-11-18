@@ -36,16 +36,22 @@ summary(data)
 
 ```{r}
 # draw histogram
+hist(data)
 
 # superimpose empirical density
+empirical_cdf <- ecdf(data)
+plot(empirical_cdf, lwd = 2)
 
 # superimpose normal density
+plot(density(data))
+
 ```
 
 ### Plot ecdf
 
 ```{r} 
 # plot ecdf
+
 
 # superimpose cdf for standard normal
 
