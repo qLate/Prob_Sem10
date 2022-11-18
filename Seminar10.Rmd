@@ -17,14 +17,14 @@ id <- 30
 
 # your code here
 id <- 50
+n <- 1000
+
 mu1 <- id
 mu2 <- -2
 sigma1 <- 3
 sigma2 <- id
 
-for (i in 1:500) {
-  data <- rnorm(n, mean = c(mu1, mu2), sd = c(sigma1, sigma2))
-}
+data <- rnorm(n, mean = c(mu1, mu2), sd = c(sigma1, sigma2))
 
 summary(data)
 ``` 
@@ -43,7 +43,6 @@ plot(empirical_cdf, lwd = 2)
 
 # superimpose normal density
 plot(density(data))
-
 ```
 
 ### Plot ecdf
